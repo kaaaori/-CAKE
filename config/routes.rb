@@ -7,18 +7,20 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
   
-  root to: 'public/homes#top'
-  get '/homes/about', to: 'public/homes#about', as: 'about'
-  get '/customers' => 'public/customers#show'
-  
-  
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  
+  root to: 'public/homes#top'
+  get '/about', to: 'public/homes#about', as: 'about'
+  get '/customers' => 'public/customers#show'
+  
+  
   namespace :admin do
     get '/' => 'homes#top'
+    
   end
   
 end

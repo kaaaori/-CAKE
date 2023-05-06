@@ -8,3 +8,4 @@
 
 #調べればOK rails seeds(migrateご)
 
+Admin.create!(email: "test@test.com", password: "111111")
