@@ -1,1 +1,59 @@
-<h1>エンドユーザ#マイページ</h1>
+<div class="colspan">
+  <div class="row">
+    <div class="mx-auto col-6">
+      <div class="form-group row">
+        <div class="col-2">
+          <h4>登録情報</h4>
+        </div>
+        <div class="col-2">
+          <%= link_to "編集する", customers_information_edit_path, class: "btn btn-sm btn-success" %>
+        </div>
+      </div>
+      <table rules="all", frame="box", class="table">
+        <tbody border="1">
+          <tr></tr>
+          <tr>
+            <td bgcolor="#f5f5f5">氏名</th>
+            <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td bgcolor="#f5f5f5">カナ</td>
+            <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+          </tr>
+          <tr>
+            <td bgcolor="#f5f5f5">郵便番号</td>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <td bgcolor="#f5f5f5">住所</td>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td bgcolor="#f5f5f5">電話番号</td>
+            <td><%= @customer.telephone_number %></td>
+          </tr>
+          <tr>
+            <td bgcolor="#f5f5f5">メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="form-group row">
+        <div class="col-2">
+          <h4>配送先</h4>
+        </div>
+        <div class="col-2">
+          <%= link_to "一覧を見る", customers_information_edit_path, class: "btn btn-sm btn-primary" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-2">
+          <h4>注文履歴</h4>
+        </div>
+        <div class="col-2">
+          <%= link_to "一覧を見る", customers_information_edit_path, class: "btn btn-sm btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  

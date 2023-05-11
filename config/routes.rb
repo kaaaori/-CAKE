@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers,skip: [:passwords], controllers: {
@@ -13,14 +13,24 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   
-  root to: 'public/homes#top'
-  get '/about', to: 'public/homes#about', as: 'about'
-  get '/customers' => 'public/customers#show'
+  
+  scope module: :public do
+    root to: 'homes#top'
+    get '/about' => 'homes#about'
+    get '/customers' => 'customers#show', as: 'mypage'
+    get '/customers/information/edit' => 'customers#edit'
+    patch '/customers/information' => 'customers#update'
+    get '/customers/unsubscribe' => 'customers#unsubscribe'
+    patch '/customers/withdrawal' => 'customers#withdrawal'
+    
+    resources :items, only: [:index, :show]
+  end
+  
   
   
   namespace :admin do
-    get '/' => 'homes#top'
-    
+    root to: 'homes#top'
+    resources :items, only: [:new, :index, :show, :edit]
   end
   
-end
+  end

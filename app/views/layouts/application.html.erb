@@ -1,16 +1,98 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cake</title>
+    <title>ながのCake</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
+  
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <p class="navbar-brand p-3"><%= link_to "logo", root_path %></p>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to "マイページ", mypage_path %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "商品一覧", items_path %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "カート", mypage_path %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+                </li>
+              <% elsif admin_signed_in? %>
+                 <li class="nav-item">
+                  <%= link_to "商品一覧", admin_items_path %>
+                </li>
+                 <li class="nav-item">
+                  <%= link_to "会員一覧", admin_root_path %>
+                </li>
+                 <li class="nav-item">
+                  <%= link_to "注文履歴一覧", admin_root_path %>
+                </li>
+                 <li class="nav-item">
+                  <%= link_to "ジャンル一覧", admin_root_path %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to "About", about_path %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "商品一覧", root_path %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "新規登録", new_customer_registration_path %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_customer_session_path %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="mb-auto">
     <%= yield %>
+    </main>
+    <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <p>ながのCAKE</p>
+          </div>
+          <div class="col-md-8">
+            <h6 class="text-white mt-2 mb-3">Link</h6>
+            <ul class="p-0 list-unstyled">
+              <li>
+                <a href="" title="About" class="text-white-50">会社概要</a>
+              </li>
+              <li>
+                <a href="" title="License informations" class="text-white-50">プライバシーポリシー</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
