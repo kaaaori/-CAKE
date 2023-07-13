@@ -1,0 +1,6 @@
+<h5 class="mt-3">ジャンル検索</h5>
+  <% genres.each do |genre| %>
+    <div>
+      <%= link_to genre.name, items_path(genre: genre.id) %>
+    </div>
+  <% end %>

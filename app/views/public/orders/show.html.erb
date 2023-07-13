@@ -1,0 +1,62 @@
+注文履歴一覧
+<div class="container">
+  <div class="row">
+  <div class="mx-auto col-12">
+    
+      
+      <p>注文情報</p>
+      <table border class="table">
+        <tr>
+          <td bgcolor="#e8e8e8">注文日</td>
+          <td><%= l @order.created_at %></td>
+        <tr>
+          <td bgcolor="#e8e8e8">配送先</td>
+          <td><%= @order.address_display %></td>
+          <!--<td>%= @order.postal_code% %= @order.address % %= @order.address_name %></td>でもOK-->
+        </tr>
+        <tr>
+          <td bgcolor="#e8e8e8">支払方法</td>
+          <td><%= @order.payment_method_i18n%></td>
+        </tr>
+      </table>
+      <br>
+      <p>注文内容</p>
+      <table border class="table">
+            <tr bgcolor="#e8e8e8">
+              <td>商品</td>
+              <td>単価（税込）</td>
+              <td>個数</td>
+              <td>小計</td>
+            </tr>
+        <% @order_details.each do |order_detail| %>
+          <% @sum = 0 %>
+          <% @sum += order_detail.item.with_tax_price %>
+            <tr>
+              <td><%= order_detail.item.name %></td>
+              <td><%= order_detail.item.with_tax_price %></td>
+              <td><%= order_detail.amount %></td>
+              <td><%= order_detail.item.with_tax_price*order_detail.amount %>
+            </tr>
+          <% end %>
+        
+      </table>
+      
+      <p>請求情報</p>
+      <table border class="table">
+        <tr>
+          <td bgcolor="#e8e8e8">商品合計</td>
+          <td><%= @sum %>円</td>
+        </tr>
+        <tr>
+          <td bgcolor="#e8e8e8">配送料</td>
+          <td>800円</td>
+        </tr>
+        <tr>
+          <td bgcolor="#e8e8e8">ご請求金額</td>
+          <td><%= @sum + 800 %>円</td>
+        </tr>
+        </table>
+        
+    </div>
+  </div>
+</div>

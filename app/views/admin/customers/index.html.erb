@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="mx-auto col-8">
+    <div class="row">
+      <h4 class="mt-3 col-11">会員一覧</h4>
+    </div>
+    
+    <div class="row">
+      <table class="table table-hoever table-inverse">
+        <thead>
+          <tr>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td><%= link_to customer.last_name, admin_customer_path(customer.id) %></td>
+            <td><%= customer.email %></td>
+            <td></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
