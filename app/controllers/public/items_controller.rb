@@ -1,5 +1,5 @@
 class Public::ItemsController < ApplicationController
-  
+  before_action :authenticate_customer!
   def index
     @genres = Genre.all
     if params[:genre]
@@ -8,6 +8,9 @@ class Public::ItemsController < ApplicationController
     else
       @items = Item.all
     end
+    @items = Item.page(params[:page]).per(8)
+    # @items = Item.order('id DESC').limit(8)
+    
   end
   
   def show

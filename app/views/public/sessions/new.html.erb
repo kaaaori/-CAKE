@@ -1,39 +1,32 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<%= form_with model: @customer, url: customer_session_path do |f| %>
   <div class="container">
     <h3 class="headline">ログイン</h3>
       <div class="row">
-        <div class="mx-auto" >
-          <table class="table">
-            <tbody>
-              <tr></tr>
-              <tr>
-                <td>会員の方はこちらからログイン</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>メールアドレス</td>
-                <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-              </tr>
-              <tr>
-                <td>パスワード</td>
-                <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-              </tr>
-              <tr></tr>
-              <tr>
-                <td></td>
-                <td><%= f.submit "ログイン", class: "btn btn-sm btn-primary w-100" %></td>
-              </tr>
-            </tbody>
-          </table>
+        <div class="col-8 mx-auto" >
+          <h5><span class=".bg-light.bg-opacity-75">会員の方はこちらからログイン</span></h5>
+          <div class="form-group row">
+          <%=f.label :input_name, "メールアドレス", class:"col-4"%>
+            <div class="col-8">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email"%>
+            </div>
+          </div>
+          <div class="form-group row">
+            <%=f.label :input_password, "パスワード", class:"col-4"%>
+            <div class="col-8">
+              <%= f.password_field :password, autocomplete: "new-password"%>
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <%= f.submit "　ログイン　", class: "btn btn-sm btn-primary" %>
+          </div>
         </div>
       </div>
+          
       <div class="row">
-        <div class="mx-auto">
-        <h3><span class=".bg-light.bg-opacity-75">会員登録がお済みでない方</span></h3>
-          <!--背景色できていない↑-->
+        <div class="col-8 mx-auto">
+        <h5><span class=".bg-light.bg-opacity-75">会員登録がお済みでない方</span></h5>
           <%= link_to "こちら", new_customer_registration_path %> から新規登録を行ってください。
         </div>
       </div>
   </div>
 <% end %>
-<!--%= render "customers/shared/links"的なのは必要？ %>-->

@@ -63,7 +63,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   
   #サインアップした遷移先(mypage)
   def after_sign_up_path_for(resource)
-    customers_path
+    mypage_path
   end
   
   protected

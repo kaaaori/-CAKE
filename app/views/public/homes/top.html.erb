@@ -1,10 +1,27 @@
 <div class="container">
   <div class="row">
-    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6" >
+    <div class="col-3">
+      <%=render 'admin/genres/genresearch', genres: @genres %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto" >
       <p>ようこそ、ながのCAKEへ！</p>
       <p>このサイトは、ケーキの販売サイトになります。</p>
       <p>会員ではない方も商品の閲覧はできますが、</p>
       <p>購入には会員登録が必要になります。</p>
     </div>
   </div>
+  <br>
+  <h5>新着情報</h5>
+  <div class="row mx-auto row-cols-4">
+      <% @items.each do |item| %>
+        <div class="col">
+          <%= image_tag item.get_image(100,100) %>
+          <p><%= link_to item.name, item_path(item.id) %></p>
+          <p>¥<%= item.with_tax_price %></p>
+        </div>
+      <% end %>
+    </div>
+    <p class="text-right"><%= link_to "全ての商品を見る", items_path %></p>
 </div>

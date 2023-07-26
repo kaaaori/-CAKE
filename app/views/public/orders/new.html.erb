@@ -14,8 +14,9 @@
         <p><%= f.radio_button :select_address, 0 %>ご自身の住所</p>
         <%= current_customer.address_display%>
         
-        <p><%= f.radio_button :select_address, 1 %>登録住所から選択</p>
-        <%= f.select :delivery_address_id, options_from_collection_for_select(DeliveryAddress.all, :id, :address_display) %>
+        <!--<p>%= f.radio_button :select_address, 1 %>登録住所から選択</p>-->
+        <!--%= f.select :delivery_address_id, options_from_collection_for_select(DeliveryAddress.all, :id, :address_display) %>-->
+       <br>
        <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
      <% end%>
     </div>

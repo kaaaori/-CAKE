@@ -3,7 +3,7 @@
     <div class="mx-auto col-6">
       <div class="row">
         <div class="col-12">
-         <h4>本当に退会しますか？</h4>
+         <h4 class="mt-5">本当に退会しますか？</h4>
         </div>
       </div>
       <div class="row">
@@ -18,7 +18,7 @@
         <%= link_to "退会しない", mypage_path, class: "btn btn-sm btn-primary" %>
        </div>
        <div class="col-4">
-        <%= link_to "退会する", customers_withdrawal_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-sm btn-danger"%>
+        <%= link_to "退会する", customers_withdrawal_path, method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-sm btn-danger"%>
        </div>
       </div>
     </div>

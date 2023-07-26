@@ -59,3 +59,5 @@ gem 'devise'
 #gem 'font-awesome-sass'
 
 gem "enum_help"
+
+gem 'kaminari'

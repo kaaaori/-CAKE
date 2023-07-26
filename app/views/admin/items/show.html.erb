@@ -3,10 +3,9 @@
     <div class="row">
       <h4 class="mt-3 col-12">商品詳細</h4>
         <div class=col-4>
-          <%= image_tag @item.get_image %>
+          <%= image_tag @item.get_image(100,100) %>
         </div>
         <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
-        <div class="col-8">
           <table class="table">
             <tbody>
               <tr></tr>
@@ -29,7 +28,6 @@
               </tr>
             </tbody>
           </table>
-        </div>
         <% end %>
       </div>
   </div>

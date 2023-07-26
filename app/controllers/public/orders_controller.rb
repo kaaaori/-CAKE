@@ -1,10 +1,14 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
   def new
     @order = Order.new
+    if current_customer.cart_items.empty?
+      redirect_to cart_items_path
+    end
   end
   
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
     @order_details = OrderDetail.where(order_id: params[:id])
   end
   
@@ -43,7 +47,7 @@ class Public::OrdersController < ApplicationController
       @order_details.save
     end
    
-    @cart_items.destroy_all
+    CartItem.destroy_all
     redirect_to orders_thanks_path
   end
 

@@ -10,9 +10,6 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    # increase_or_create(params[:cart_item][:item_id])
-    
-    # cart_item.item_id = cart_item_params[:item_id]
     if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
